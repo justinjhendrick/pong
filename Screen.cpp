@@ -1,10 +1,7 @@
-// C headers
 #include <string.h>
 #include <stdio.h>
 #include <assert.h>
-
-// CPP headers
-#include "Screen.h"
+#include "Screen.hpp"
 
 Screen::Screen() {
     memset(data, ' ', HEIGHT * WIDTH);
@@ -12,11 +9,6 @@ Screen::Screen() {
 
 // draw data to screen
 void Screen::flip() {
-    // clear previous screen
-    for (int i = 0; i < HEIGHT; i++) {
-        printf("\n");
-    }
-
     // output data
     for (int r = 0; r < HEIGHT; r++) {
         printf("%.*s\n", WIDTH, data[r]);
@@ -29,12 +21,14 @@ void Screen::flip() {
 // draw sprite at row, col
 void Screen::put(char** sprite, int row, int col, int height, int width) {
     // TODO: special empty character (maybe)
-    // make sure it's within the bounds
+
+    // make sure it's within the screen boundary
     assert(row >= 0);
     assert(col >= 0);
     assert(row + height <= HEIGHT);
     assert(col + width <= WIDTH);
 
+    // copy into screen data
     for (int r = 0; r < height; r++) {
         memcpy(&data[row + r][col], sprite[r], width);
     }

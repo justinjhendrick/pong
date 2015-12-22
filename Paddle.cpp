@@ -1,5 +1,5 @@
 #include <stdlib.h>
-#include "Paddle.h"
+#include "Paddle.hpp"
 
 Paddle::Paddle(int _r, int _c) {
     r = _r;
@@ -13,11 +13,11 @@ Paddle::Paddle(int _r, int _c) {
     }
 }
 
-int Paddle::getRow() {
+int Paddle::row() {
     return r;
 }
 
-int Paddle::getCol() {
+int Paddle::col() {
     return c;
 }
 
@@ -31,5 +31,5 @@ void Paddle::move(int magnitude) {
 
 void Paddle::bounce(Ball& b) {
     // TODO
-    b.flipHorizDir();
+    b.flip_horiz_dir();
 }

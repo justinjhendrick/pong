@@ -1,10 +1,10 @@
-#include "Ball.h"
+#include "Ball.hpp"
 
-Ball::Ball(int _r, int _c, int _rVel, int _cVel) {
+Ball::Ball(int _r, int _c, int _r_vel, int _c_vel) {
     r = _r;
     c = _c;
-    rVel = _rVel;
-    cVel = _cVel;
+    r_vel = _r_vel;
+    c_vel = _c_vel;
 }
 
 void Ball::draw(Screen& s) {
@@ -12,25 +12,25 @@ void Ball::draw(Screen& s) {
 }
 
 void Ball::move() {
-    r += rVel;
-    c += cVel;
+    r += r_vel;
+    c += c_vel;
 }
 
-void Ball::changeVel(int _rVel, int _cVel) {
-    rVel = _rVel;
-    cVel = _cVel;
+void Ball::change_vel(int _r_vel, int _c_vel) {
+    r_vel = _r_vel;
+    c_vel = _c_vel;
 }
 
-bool Ball::isColliding(Paddle& p) {
-    int pr = p.getRow();
-    int pc = p.getCol();
+bool Ball::is_colliding(Paddle& p) {
+    int pr = p.row();
+    int pc = p.col();
     return c == pc && r >= pr && r < pr + Paddle::HEIGHT;
 }
 
-void Ball::flipHorizDir() {
-    cVel = -cVel;
+void Ball::flip_horiz_dir() {
+    c_vel = -c_vel;
 }
 
-void Ball::flipVertDir() {
-    rVel = -rVel;
+void Ball::flip_vert_dir() {
+    r_vel = -r_vel;
 }
