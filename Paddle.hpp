@@ -15,11 +15,11 @@ class Paddle {
         static const int HEIGHT = 10;
         static const int WIDTH = 1;
         Paddle(int, int);
+        ~Paddle();
         int row();
         int col();
         void draw(Screen& s);
         void move(int);
-        void bounce(Ball&);
 };
 
 #endif

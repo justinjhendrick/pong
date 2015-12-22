@@ -20,8 +20,6 @@ void Screen::flip() {
 
 // draw sprite at row, col
 void Screen::put(char** sprite, int row, int col, int height, int width) {
-    // TODO: special empty character (maybe)
-
     // make sure it's within the screen boundary
     assert(row >= 0);
     assert(col >= 0);

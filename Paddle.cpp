@@ -26,10 +26,15 @@ void Paddle::draw(Screen& s) {
 }
 
 void Paddle::move(int magnitude) {
-    r += magnitude;
+    int new_r = r + magnitude;
+    if (new_r >= 0 && new_r + HEIGHT < Screen::HEIGHT) {
+        r = new_r;
+    }
 }
 
-void Paddle::bounce(Ball& b) {
-    // TODO
-    b.flip_horiz_dir();
+Paddle::~Paddle() {
+    for (int i = 0; i < HEIGHT; i++) {
+        free(sprite[i]);
+    }
+    free(sprite);
 }
