@@ -4,8 +4,7 @@
 #include "Paddle.hpp"
 #include "Screen.hpp"
 #include "Keyboard.hpp"
-// TODO
-//#include "Score.h"
+#include "Score.hpp"
 
 #define P1_UP 'w'
 #define P1_DOWN 'd'
@@ -15,8 +14,7 @@
 int main() {
     Screen s;
     Score score;
-    // start ball at top left moving right
-    Ball b(0, 1, 0, 1);
+    Ball b(Screen::HEIGHT / 2, 1, 0, 1);
     Paddle p1(0, 0);
     Paddle p2(0, Screen::WIDTH - 1);
 
@@ -49,7 +47,7 @@ int main() {
         // b.move handles collisions
         bool point_made = b.move(p1, p2, score);
         if (point_made) {
-            b.set_pos_vel(0, 1, 0, 1);
+            b.set_pos_vel(Screen::HEIGHT / 2, 1, 0, 1);
         }
             
         // draw
@@ -60,5 +58,4 @@ int main() {
         s.flip();
         usleep(100000);
     }
-    // TODO: free memory
 }

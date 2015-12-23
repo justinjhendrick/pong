@@ -22,6 +22,8 @@ void Ball::draw(Screen& s) {
 bool Ball::move(Paddle& p1, Paddle& p2, Score& score) {
     r += r_vel;
     c += c_vel;
+    
+    // paddles hit?
     if (is_colliding(p1)) {
         bounce(p1);
         return false;
@@ -30,6 +32,7 @@ bool Ball::move(Paddle& p1, Paddle& p2, Score& score) {
         return false;
     }
 
+    // point scored?
     if (c < 0) {
         score.award_p2();
         return true;
@@ -38,7 +41,9 @@ bool Ball::move(Paddle& p1, Paddle& p2, Score& score) {
         return true;
     }
 
-    if (r >= 0 || r <= Screen::HEIGHT) {
+    // hit wall?
+    if (r < 0 || r >= Screen::HEIGHT) {
+        r -= r_vel;
         flip_vert_dir();
         return false;
     }
@@ -65,6 +70,13 @@ void Ball::flip_vert_dir() {
 }
 
 void Ball::bounce(Paddle& p) {
-    // TODO
+    int pr = p.row();
+    if (r < pr + Paddle::HEIGHT / 3) {
+        r_vel--;
+    } else if (r < pr + 2 * Paddle::HEIGHT / 3) {
+        // bounce straight
+    } else {
+        r_vel++;
+    }
     flip_horiz_dir();
 }

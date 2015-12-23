@@ -28,10 +28,15 @@ void Screen::put(char** sprite, int row, int col, int height, int width) {
 
     // copy into screen data
     for (int r = 0; r < height; r++) {
-        memcpy(&data[row + r][col], sprite[r], width);
+        memcpy(data[row + r] + col, sprite[r], width);
     }
 }
 
 void Screen::put(char sprite, int row, int col) {
+    assert(row >= 0);
+    assert(col >= 0);
+    assert(row < HEIGHT);
+    assert(col < WIDTH);
+
     data[row][col] = sprite;
 }
