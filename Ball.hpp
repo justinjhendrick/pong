@@ -9,18 +9,18 @@ class Ball;
 
 class Ball {
     private:
-        int r;
-        int c;
-        int r_vel;
-        int c_vel;
+        float r;
+        float c;
+        float angle; // in radians clockwise from the r axis
+        float magnitude; // in blocks per screen flip
         bool is_colliding(Paddle& p);
+        // keep angle within 0 .. 2pi
+        void normalize_angle();
     public:
-        Ball(int _r, int _c, int _r_vel, int _c_vel);
-        void set_pos_vel(int _r, int _c, int _r_vel, int _c_vel);
+        Ball(float _r, float _c, float _angle, float _magnitude);
+        void set_pos_vel(float _r, float _c, float _angle, float _magnitude);
         void draw(Screen& s);
         bool move(Paddle& p1, Paddle& p2, Score& score);
-        void change_vel(int _r_Vel, int _c_vel);
-        void flip_horiz_dir();
         void flip_vert_dir();
         void bounce(Paddle& p);
 };

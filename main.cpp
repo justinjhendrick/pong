@@ -14,7 +14,7 @@
 int main() {
     Screen s;
     Score score;
-    Ball b(Screen::HEIGHT / 2, 1, 0, 1);
+    Ball b((float) (Screen::HEIGHT / 2), (float) (Screen::WIDTH / 2), 0., 1.);
     Paddle p1(0, 0);
     Paddle p2(0, Screen::WIDTH - 1);
 
@@ -47,7 +47,7 @@ int main() {
         // b.move handles collisions
         bool point_made = b.move(p1, p2, score);
         if (point_made) {
-            b.set_pos_vel(Screen::HEIGHT / 2, 1, 0, 1);
+            b.set_pos_vel((float) (Screen::HEIGHT / 2), 1., 0., 1.);
         }
             
         // draw

@@ -32,7 +32,6 @@ void Score::draw(Screen& s) {
 
 void Score::update_sprite() {
     snprintf(sprite, BOARD_LEN + 1, "%02d SCORE %02d", p1, p2);
-    printf("%s", sprite);
 }
 
 void Score::award_p1() {

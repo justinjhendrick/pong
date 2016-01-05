@@ -27,7 +27,7 @@ void Paddle::draw(Screen& s) {
 
 void Paddle::move(int magnitude) {
     int new_r = r + magnitude;
-    if (new_r >= 0 && new_r + HEIGHT < Screen::HEIGHT) {
+    if (new_r >= 0 && new_r + HEIGHT <= Screen::HEIGHT) {
         r = new_r;
     }
 }

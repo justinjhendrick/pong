@@ -1,25 +1,29 @@
 #include "Ball.hpp"
 #include "Score.hpp"
 #include "Paddle.hpp"
+#include <cmath>
+#include <stdio.h>
 
-Ball::Ball(int _r, int _c, int _r_vel, int _c_vel) {
-    set_pos_vel(_r, _c, _r_vel, _c_vel);
+Ball::Ball(float _r, float _c, float _angle, float _magnitude) {
+    set_pos_vel(_r, _c, _angle, _magnitude);
 }
     
-void Ball::set_pos_vel(int _r, int _c, int _r_vel, int _c_vel) {
+void Ball::set_pos_vel(float _r, float _c, float _angle, float _magnitude) {
     r = _r;
     c = _c;
-    r_vel = _r_vel;
-    c_vel = _c_vel;
+    angle = _angle;
+    magnitude = _magnitude;
 }
 
 void Ball::draw(Screen& s) {
-    s.put('X', r, c);
+    s.put('X', (int) floor(r), (int) floor(c));
 }
 
 // moves ball. updates score
 // returns true if a point was scored
 bool Ball::move(Paddle& p1, Paddle& p2, Score& score) {
+    float r_vel = magnitude * sin(angle);
+    float c_vel = magnitude * cos(angle);
     r += r_vel;
     c += c_vel;
     
@@ -32,17 +36,19 @@ bool Ball::move(Paddle& p1, Paddle& p2, Score& score) {
         return false;
     }
 
+    int ir = (int) floor(r);
+    int ic = (int) floor(c);
     // point scored?
-    if (c < 0) {
+    if (ic < 0) {
         score.award_p2();
         return true;
-    } else if (c >= Screen::WIDTH) {
+    } else if (ic >= Screen::WIDTH) {
         score.award_p1();
         return true;
     }
 
     // hit wall?
-    if (r < 0 || r >= Screen::HEIGHT) {
+    if (ir < 0 || ir >= Screen::HEIGHT) {
         r -= r_vel;
         flip_vert_dir();
         return false;
@@ -50,33 +56,38 @@ bool Ball::move(Paddle& p1, Paddle& p2, Score& score) {
     return false;
 }
 
-void Ball::change_vel(int _r_vel, int _c_vel) {
-    r_vel = _r_vel;
-    c_vel = _c_vel;
-}
-
 bool Ball::is_colliding(Paddle& p) {
     int pr = p.row();
     int pc = p.col();
-    return c == pc && r >= pr && r < pr + Paddle::HEIGHT;
-}
-
-void Ball::flip_horiz_dir() {
-    c_vel = -c_vel;
+    int ir = (int) floor(r);
+    int ic = (int) floor(c);
+    return ic == pc && ir >= pr && ir < pr + Paddle::HEIGHT;
 }
 
 void Ball::flip_vert_dir() {
-    r_vel = -r_vel;
+    printf("%f, ", angle);
+    angle = 2 * M_PI - angle;
+    printf("%f\n", angle);
+}
+
+void Ball::normalize_angle() {
+    if (angle < 0.) {
+        angle += 2 * M_PI;
+    } else if (angle > 2 * M_PI) {
+        angle -= 2 * M_PI;
+    }
 }
 
 void Ball::bounce(Paddle& p) {
     int pr = p.row();
-    if (r < pr + Paddle::HEIGHT / 3) {
-        r_vel--;
-    } else if (r < pr + 2 * Paddle::HEIGHT / 3) {
-        // bounce straight
-    } else {
-        r_vel++;
+    int pc = p.col();
+    angle = -M_PI_4 + M_PI_2 / Paddle::HEIGHT * (r - pr);
+    normalize_angle();
+
+    if (pc != 0) {
+        angle = M_PI - angle;
     }
-    flip_horiz_dir();
+    normalize_angle();
+
+    //magnitude += .25;
 }
