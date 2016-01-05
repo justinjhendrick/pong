@@ -65,9 +65,7 @@ bool Ball::is_colliding(Paddle& p) {
 }
 
 void Ball::flip_vert_dir() {
-    printf("%f, ", angle);
     angle = 2 * M_PI - angle;
-    printf("%f\n", angle);
 }
 
 void Ball::normalize_angle() {
