@@ -16,7 +16,17 @@ void Ball::set_pos_vel(float _r, float _c, float _angle, float _magnitude) {
 }
 
 void Ball::draw(Screen& s) {
-    s.put('X', (int) floor(r), (int) floor(c));
+    float decimal = r - floor(r);
+    char sprite;
+    if (decimal < .33) {
+        sprite = '\'';
+    } else if (decimal > .66) {
+        sprite = '.';
+    } else {
+        sprite = '-';
+    }
+
+    s.put(sprite, (int) floor(r), (int) floor(c));
 }
 
 // moves ball. updates score
@@ -38,6 +48,18 @@ bool Ball::move(Paddle& p1, Paddle& p2, Score& score) {
 
     int ir = (int) floor(r);
     int ic = (int) floor(c);
+    // hit wall?
+    if (ir < 0 || ir >= Screen::HEIGHT) {
+        r -= r_vel;
+        c -= c_vel;
+        flip_vert_dir();
+        r_vel = magnitude * sin(angle);
+        c_vel = magnitude * cos(angle);
+        r += r_vel;
+        c += c_vel;
+        return false;
+    }
+
     // point scored?
     if (ic < 0) {
         score.award_p2();
@@ -45,13 +67,6 @@ bool Ball::move(Paddle& p1, Paddle& p2, Score& score) {
     } else if (ic >= Screen::WIDTH) {
         score.award_p1();
         return true;
-    }
-
-    // hit wall?
-    if (ir < 0 || ir >= Screen::HEIGHT) {
-        r -= r_vel;
-        flip_vert_dir();
-        return false;
     }
     return false;
 }
