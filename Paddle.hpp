@@ -10,7 +10,7 @@ class Paddle {
     private:
         int r;
         int c;
-        char** sprite;
+        wchar_t** sprite;
     public:
         static const int HEIGHT = 10;
         static const int WIDTH = 1;

@@ -7,7 +7,7 @@ class Screen {
         static const int WIDTH = 80;
 
     private:
-        char data[HEIGHT][WIDTH];
+        wchar_t data[HEIGHT][WIDTH];
 
     public:
         Screen();
@@ -16,10 +16,10 @@ class Screen {
         void flip();
 
         // draw sprite at row, col
-        void put(char** sprite, int row, int col, int width, int height);
+        void put(wchar_t** sprite, int row, int col, int width, int height);
 
         // draw a one character sprite
-        void put(char sprite, int row, int col);
+        void put(wchar_t sprite, int row, int col);
 };
 
 #endif

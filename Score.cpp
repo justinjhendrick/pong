@@ -10,7 +10,7 @@ Score::Score() {
     p1 = 0;
     p2 = 0;
 
-    sprite = (char*) malloc(BOARD_LEN);
+    sprite = (wchar_t*) malloc(BOARD_LEN);
     sprite[0]  = '0';
     sprite[1]  = '0';
     sprite[2]  = ' ';

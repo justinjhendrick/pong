@@ -19,7 +19,7 @@ void Screen::flip() {
 }
 
 // draw sprite at row, col
-void Screen::put(char** sprite, int row, int col, int height, int width) {
+void Screen::put(wchar_t** sprite, int row, int col, int height, int width) {
     // make sure it's within the screen boundary
     assert(row >= 0);
     assert(col >= 0);
@@ -32,7 +32,7 @@ void Screen::put(char** sprite, int row, int col, int height, int width) {
     }
 }
 
-void Screen::put(char sprite, int row, int col) {
+void Screen::put(wchar_t sprite, int row, int col) {
     assert(row >= 0);
     assert(col >= 0);
     assert(row < HEIGHT);

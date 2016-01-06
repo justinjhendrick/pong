@@ -7,7 +7,7 @@ class Score {
     private:
         int p1;
         int p2;
-        char* sprite;
+        wchar_t* sprite;
         void update_sprite();
     public:
         Score();

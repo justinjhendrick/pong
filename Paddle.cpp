@@ -5,10 +5,10 @@ Paddle::Paddle(int _r, int _c) {
     r = _r;
     c = _c;
 
-    sprite = (char**) malloc(HEIGHT * sizeof(char*));
+    sprite = (wchar_t**) malloc(HEIGHT * sizeof(wchar_t*));
     // initialize the sprite
     for (int i = 0; i < HEIGHT; i++) {
-        sprite[i] = (char*) malloc(sizeof(char));
+        sprite[i] = (wchar_t*) malloc(sizeof(wchar_t));
         sprite[i][0] = '|';
     }
 }

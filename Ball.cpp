@@ -16,7 +16,17 @@ void Ball::set_pos_vel(float _r, float _c, float _angle, float _magnitude) {
 }
 
 void Ball::draw(Screen& s) {
-    s.put('X', (int) floor(r), (int) floor(c));
+    float r_down = floor(r);
+    wchar_t sprite;
+    if (r - r_down < .33) {
+        sprite = '\u02D9';
+    } else if (r - r_down > .66) {
+        sprite = '\u0358';
+    } else {
+        sprite = '\u00B7';
+    }
+    
+    s.put(sprite, (int) r_down, (int) floor(c));
 }
 
 // moves ball. updates score
