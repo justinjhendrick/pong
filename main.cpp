@@ -28,7 +28,6 @@ int main() {
     s.flip();
 
     Keyboard kb;
-    kb.start();
 
     unsigned int sleep_micros = INIT_SLEEP;
 

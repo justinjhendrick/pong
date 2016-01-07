@@ -43,3 +43,7 @@ void Score::award_p2() {
     p2++;
     update_sprite();
 }
+
+Score::~Score() {
+    free(sprite);
+}

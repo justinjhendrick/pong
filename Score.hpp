@@ -11,6 +11,7 @@ class Score {
         void update_sprite();
     public:
         Score();
+        ~Score();
         void draw(Screen& s);
         void award_p1();
         void award_p2();

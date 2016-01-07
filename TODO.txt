@@ -1,4 +1,3 @@
-check for memory leaks
 Any terminal size
 Ball starts middle (don't always go right)
 paddles start middle

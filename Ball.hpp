@@ -11,7 +11,7 @@ class Ball {
     private:
         float r;
         float c;
-        float angle; // in radians clockwise from the r axis
+        float angle; // in radians clockwise from the c axis
         float magnitude; // in blocks per screen flip
         bool is_colliding(Paddle& p);
         // keep angle within 0 .. 2pi
