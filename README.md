@@ -14,7 +14,7 @@ then resize your terminal to 80x25 (width x height)
 
 # How to play
 Don't let the ball go past your paddle. Try to send it past
-your opponent's paddle.
+your opponent's paddle. First to 10 points wins.
 
 Player 1 controls:
 
