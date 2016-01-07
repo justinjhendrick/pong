@@ -29,9 +29,10 @@ void Ball::draw(Screen& s) {
     s.put(sprite, (int) floor(r), (int) floor(c));
 }
 
-// moves ball. updates score
-// returns true if a point was scored
-bool Ball::move(Paddle& p1, Paddle& p2, Score& score) {
+// returns -1 if p1 scored,
+//         0  if nobody scored,      
+//         1  if p2 scored
+int Ball::move(Paddle& p1, Paddle& p2) {
     float r_vel = magnitude * sin(angle);
     float c_vel = magnitude * cos(angle);
     r += r_vel;
@@ -40,10 +41,10 @@ bool Ball::move(Paddle& p1, Paddle& p2, Score& score) {
     // paddles hit?
     if (is_colliding(p1)) {
         bounce(p1);
-        return false;
+        return 0;
     } else if (is_colliding(p2)) {
         bounce(p2);
-        return false;
+        return 0;
     }
 
     int ir = (int) floor(r);
@@ -57,18 +58,16 @@ bool Ball::move(Paddle& p1, Paddle& p2, Score& score) {
         c_vel = magnitude * cos(angle);
         r += r_vel;
         c += c_vel;
-        return false;
+        return 0;
     }
 
     // point scored?
     if (ic < 0) {
-        score.award_p2();
-        return true;
+        return 1;
     } else if (ic >= Screen::WIDTH) {
-        score.award_p1();
-        return true;
+        return -1;
     }
-    return false;
+    return 0;
 }
 
 bool Ball::is_colliding(Paddle& p) {

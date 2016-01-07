@@ -15,6 +15,8 @@ class Score {
         void draw(Screen& s);
         void award_p1();
         void award_p2();
+        int get_p1();
+        int get_p2();
 };
 
 #endif

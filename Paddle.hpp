@@ -12,7 +12,7 @@ class Paddle {
         int c;
         char** sprite;
     public:
-        static const int HEIGHT = 10;
+        static const int HEIGHT = 8;
         static const int WIDTH = 1;
         Paddle(int, int);
         ~Paddle();

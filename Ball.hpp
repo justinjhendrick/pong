@@ -20,7 +20,7 @@ class Ball {
         Ball(float _r, float _c, float _angle, float _magnitude);
         void set_pos_vel(float _r, float _c, float _angle, float _magnitude);
         void draw(Screen& s);
-        bool move(Paddle& p1, Paddle& p2, Score& score);
+        int move(Paddle& p1, Paddle& p2);
         void flip_vert_dir();
         void bounce(Paddle& p);
 };

@@ -44,6 +44,14 @@ void Score::award_p2() {
     update_sprite();
 }
 
+int Score::get_p1() {
+    return p1;
+}
+
+int Score::get_p2() {
+    return p2;
+}
+
 Score::~Score() {
     free(sprite);
 }

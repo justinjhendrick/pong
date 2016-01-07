@@ -22,19 +22,13 @@ void Keyboard::read() {
 }
 
 int Keyboard::get() {
-    int x = -1;
-    int& result = x;
-    chars.pop(result);
-    return x;
+    int c = -1;
+    int& ref = c;
+    chars.pop(ref);
+    return c;
 }
 
 Keyboard::~Keyboard() {
-    //reader_thread.interrupt();
-    //// if reader_thread is blocking inside getchar(),
-    //// it won't reach the interruption point.
-    //// So, we give it another character so it'll break out.
-    //std::ungetc('x', stdin);
-    //reader_thread.join();
     terminal.buffer_on();
     terminal.echo_on();
 }

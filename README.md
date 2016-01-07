@@ -1,23 +1,29 @@
-Classic Pong in the terminal
+#Classic Pong in the terminal
 
-Dependencies: c++11, libboost-dev
+![pong being played][imgs/pong.jpg]
 
-How to run:
-$ make
+#Dependencies
+c++11, libboost-dev
+
+# How to run
+`$ make`
 
 then resize your terminal to 80x25 (width x height)
-$ ./pong
 
-How to play:
+`$ ./pong`
+
+# How to play
 Don't let the ball go past your paddle. Try to send it past
 your opponent's paddle.
 
 Player 1 controls:
-'w'    up
-'d'    down
+
+`w` is up  
+`d` is down
 
 Player 2 controls:
-'o'    up
-'k'    down
+
+`o` is up  
+`k` is down
 
 To quit, press 'x' at any time.
