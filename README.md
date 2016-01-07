@@ -1,6 +1,6 @@
 #Classic Pong in the terminal
 
-![pong being played][https://github.com/justinjhendrick/pong/blob/master/imgs/pong.jpg]
+![pong being played](https://github.com/justinjhendrick/pong/blob/master/imgs/pong.jpg)
 
 #Dependencies
 c++11, libboost-dev
