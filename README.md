@@ -3,13 +3,10 @@
 ![pong being played](https://github.com/justinjhendrick/pong/blob/master/imgs/pong.jpg)
 
 #Dependencies
-c++11, libboost-dev
+c++11, libboost-system-dev, libboost-thread-dev
 
 # How to run
 `$ make`
-
-then resize your terminal to 80x25 (width x height)
-
 `$ ./pong`
 
 # How to play

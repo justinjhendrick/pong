@@ -3,14 +3,16 @@
 
 class Screen {
     public:
-        static const int HEIGHT = 24;
-        static const int WIDTH = 80;
+        static int HEIGHT;
+        static int WIDTH;
 
     private:
-        char data[HEIGHT][WIDTH];
+        char** data;
+        void clear(); // fill screen with ' '
 
     public:
         Screen();
+        ~Screen();
 
         // draw data to screen
         void flip();
