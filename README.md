@@ -1,15 +1,15 @@
-#Classic Pong in the terminal
+# Classic Pong in the terminal
 
 ![pong being played](https://github.com/justinjhendrick/pong/blob/master/imgs/pong.jpg)
 
-#Dependencies
+## Dependencies
 c++11, libboost-system-dev, libboost-thread-dev
 
-# How to run
+## How to run
 `$ make`
 `$ ./pong`
 
-# How to play
+## How to play
 Don't let the ball go past your paddle. Try to send it past
 your opponent's paddle. First to 10 points wins.
 
@@ -24,3 +24,6 @@ Player 2 controls:
 `k` is down
 
 To quit, press 'x' at any time.
+
+## License
+Creative Commons Attribution (CC BY). See `COPYING` for more details.
